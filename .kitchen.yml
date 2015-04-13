@@ -1,0 +1,18 @@
+---
+driver:
+  name: vagrant
+  driver_config:
+    config_ssh_timeout: 300
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: ubuntu-12.04
+
+suites:
+  - name: default
+    run_list: 
+      - recipe[apt]
+      - recipe[pngquant]
+    attributes: { "pngquant": { "install_method" : "source" } }
